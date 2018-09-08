@@ -3,16 +3,24 @@ import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
 
 class EmployeeDetail extends Component {
-  state = {open:true};
+  constructor(props){
+    super(props);
+    this.state = {open:true};
+    const {open} = this.props.open;
+  }
+
   onOpenModel = () => {this.setState({open:true})};
   onCloseModel = () => {
     this.setState({open:false});
+    //this.setState({activeEmployee:null});
   };
   render(){
     const {open} = this.state;
+
     if(!this.props.employee){
       return (<div></div>);
     }
+
     return(
       <div>
       <Modal open={open} onClose={this.onCloseModel} center>

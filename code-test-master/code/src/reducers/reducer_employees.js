@@ -6,6 +6,7 @@ import companyData from './sample-data';
 //import react from 'react';
 export default function()
 {
+  // this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1)
   //console.log(JSON.parse(companyData));
   const EmployeeList = JSON.parse(companyData).employees;
   return EmployeeList;
