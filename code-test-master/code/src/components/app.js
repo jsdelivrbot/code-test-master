@@ -3,6 +3,8 @@ import reducer from '../reducers/reducer_employees';
 import SearchBar from './search-bar';
 import Employee_List from '../container/employee-list';
 
+
+
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -11,7 +13,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      
       <Employee_List />
       </div>
     );

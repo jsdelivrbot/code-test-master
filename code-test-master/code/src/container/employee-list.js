@@ -4,6 +4,7 @@ import IndividualEmployee from '../components/individual_employee';
 import SearchBar from '../components/search-bar';
 import {selectEmployee} from '../actions/index';
 import { bindActionCreators } from 'redux';
+import Employee_Detail from './employee_detail';
 
 class Employee_List extends Component{
 
@@ -34,7 +35,7 @@ class Employee_List extends Component{
     });
   }
   render(){
-    return(<table className="table table-hover">
+    return(<div><table className="table table-hover">
           <thead>
             <tr>
                 <td><h1>{this.props.companyInfo.companyName}</h1>{this.props.companyInfo.companyMotto}</td>
@@ -52,7 +53,9 @@ class Employee_List extends Component{
               {this.renderlist()}
 
           </tbody>
-      </table>);
+      </table>
+      <Employee_Detail /></div>
+    );
   //  return(
   //  <ul className = "list-group col-md-4">
   //  {this.renderlist()}
