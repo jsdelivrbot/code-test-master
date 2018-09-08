@@ -12,7 +12,6 @@ class Employee_List extends Component{
 
     return this.props.employeeList.map((employee) => {
       const imageUrl = employee.avatar;
-      console.log(imageUrl);
       return (
           <tr key={employee.id} onClick={() => this.props.selectEmployee(employee)}>
           <td>
