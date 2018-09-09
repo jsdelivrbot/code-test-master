@@ -35,7 +35,7 @@ class Employee_List extends Component{
     }
     console.log(employeeListFinal);
     return employeeListFinal.map((employee) => {
-        return (<div onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
+        return (<div style={{width:'355px', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
@@ -58,7 +58,7 @@ class Employee_List extends Component{
           <tbody>
           </tbody>
       </table>
-      <div>{this.renderlist()}</div>
+      <div className="container">{this.renderlist()}</div>
       <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
     );
   //  return(

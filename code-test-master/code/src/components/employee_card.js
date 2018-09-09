@@ -9,18 +9,21 @@ class EmployeeCard extends Component {
     console.log(this.props.employee);
     const imageUrl = this.props.employee.avatar;
     return (
-    
-              <Card>
+              <div>
+              <Card style={{border:'solid 1px'}}>
               <CardBody>
-
+              <div className="video-list media">
+                <div className="media-left">
+                  <img className="media-object" src={this.props.employee.avatar} />
+                </div>
+                <div className="media-body">
+                  <div className="media-heading" style={{padding:'5px'}} ><h5>{this.props.employee.firstName} {this.props.employee.lastName}</h5></div>
+                  {this.props.employee.bio.substring(0,80) + " ..."}
+                </div>
+              </div>
               </CardBody>
-                <CardBody>
-                        <CardImg  src={imageUrl} /> <CardTitle>{this.props.employee.firstName} {this.props.employee.lastName}</CardTitle>
-                        <CardText>{this.props.employee.bio}</CardText>
-                        <Button>View</Button>
-                </CardBody>
               </Card>
-
+              </div>
 
            );
 
