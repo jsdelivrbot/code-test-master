@@ -63,7 +63,7 @@ class Employee_List extends Component{
             <td className="border-end"></td>
             <td className="border-end">
             <div className="right-float">
-            <div style={{padding:'8px'}}><select value="sortBy">
+            <div style={{padding:'8px'}}>Sort by:<select value="sortBy">
               <option>First Name</option>
               <option>Last Name</option>
             </select></div>
@@ -75,7 +75,7 @@ class Employee_List extends Component{
           <tbody>
           </tbody>
       </table>
-      
+
       <div className="container">{this.renderlist()}</div>
       <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
     );
