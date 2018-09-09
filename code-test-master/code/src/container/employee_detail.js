@@ -11,11 +11,11 @@ class EmployeeDetail extends Component {
 
   onOpenModel = () => {this.setState({open:true})};
   onCloseModel = () => {
-    this.setState({open:false});
+    this.props.onClosePopUp();
     //this.setState({activeEmployee:null});
   };
   render(){
-    const {open} = this.state;
+    const {open} = this.props.open;
 
     if(!this.props.employee){
       return (<div></div>);

@@ -21,6 +21,10 @@ class Employee_List extends Component{
     this.props.filterEmployee(term);
      //this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1);
   }
+  closePopUp(){
+    this.setState({open : false});
+  }
+
   renderlist(){
     var employeeListFinal = this.props.employeeList;
     if(!this.props.employeeFilter){
@@ -31,13 +35,12 @@ class Employee_List extends Component{
     }
     console.log(employeeListFinal);
     return employeeListFinal.map((employee) => {
-        return (<div onClick={()=>this.props.selectEmployee(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
+        return (<div onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
 
     return(<div><table className="table table-hover">
-          
           <thead>
             <tr>
                 <td><h1>{this.props.companyInfo.companyName}</h1>{this.props.companyInfo.companyMotto}</td>
@@ -48,10 +51,7 @@ class Employee_List extends Component{
             <td><h3>Our Employees</h3></td>
             <td></td>
             <td>
-              <div className="nowrap">
                 <div><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
-                <div><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
-              </div>
             </td>
             </tr>
           </thead>
@@ -59,7 +59,7 @@ class Employee_List extends Component{
           </tbody>
       </table>
       <div>{this.renderlist()}</div>
-      <Employee_Detail open={this.state} /></div>
+      <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
     );
   //  return(
   //  <ul className = "list-group col-md-4">
