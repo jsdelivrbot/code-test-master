@@ -17,12 +17,19 @@ class Employee_List extends Component{
   }
   fetchEmployeeSearchList(term){
     console.log(term);
-    this.props.employeeFilter(term);
+    this.props.filterEmployee(term);
      //this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1);
   }
   renderlist(){
-    console.log(this.props.filterEmployee);
-    return this.props.employeeList.map((employee) => {
+    var employeeListFinal = this.props.employeeList;
+    if(!this.props.employeeFilter){
+      employeeListFinal = this.props.employeeList;
+    }
+    else {
+      employeeListFinal = this.props.employeeFilter;
+    }
+    console.log(employeeListFinal);
+    return employeeListFinal.map((employee) => {
       const imageUrl = employee.avatar;
         return (
             <tr key={employee.id} onClick={() => this.togglePopUp(employee)}>
@@ -82,7 +89,7 @@ function mapStateToProps(state){
   return ({
     employeeList : state.employeeList,
     companyInfo : state.companyInfo,
-    employeeFilter : state.filterEmployee 
+    employeeFilter : state.filterEmployee
   });
 }
 //anything returned from here will be as props on the employee-list container
