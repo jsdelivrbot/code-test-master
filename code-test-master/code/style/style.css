@@ -6,4 +6,29 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: #F5F5F5;
+}
+
+.header{
+  align-content: flex-start;
+}
+.end-of-the-line{
+  align-content: flex-end;
+}
+.border-class{
+  border-bottom: 1px solid;
+  background-color: silver;
+}
+.border-end{
+  border-bottom: 2px ridge;
+
+}
+
+.right-float{
+  display: flex;
+  flex-direction: row;
+  float: right;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-right: 5px;
 }

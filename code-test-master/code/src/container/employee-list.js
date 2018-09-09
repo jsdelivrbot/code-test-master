@@ -41,24 +41,41 @@ class Employee_List extends Component{
   }
   render(){
 
-    return(<div><table className="table table-hover">
+    return(<div>
+
+      <table className="table table-hover">
+
           <thead>
             <tr>
-                <td><h1>{this.props.companyInfo.companyName}</h1>{this.props.companyInfo.companyMotto}</td>
+                <td className="border-class"><h3>{this.props.companyInfo.companyName}</h3>
+                {this.props.companyInfo.companyMotto}
+                </td>
+                <td className="border-class"></td>
+                  <td className="border-class">
+                    <div style={{float:'right'}}>  Since <Moment format="YYYY" date={this.props.companyInfo.companyEst} /></div>
+                  </td>
 
-                <td>Since <Moment date={this.props.companyInfo.companyEst} /></td>
+
             </tr>
+
             <tr>
-            <td><h3>Our Employees</h3></td>
-            <td></td>
-            <td>
-                <div><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
+            <td className="border-end"><h5>Our Employees</h5></td>
+            <td className="border-end"></td>
+            <td className="border-end">
+            <div className="right-float">
+            <div style={{padding:'8px'}}><select value="sortBy">
+              <option>First Name</option>
+              <option>Last Name</option>
+            </select></div>
+            <div style={{padding:'8px',height:'3px'}}><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
+            </div>
             </td>
             </tr>
           </thead>
           <tbody>
           </tbody>
       </table>
+      
       <div className="container">{this.renderlist()}</div>
       <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
     );
