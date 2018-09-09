@@ -29,8 +29,8 @@ class Employee_List extends Component{
      }
     this.props.sortEmployee(term,empList);
   }
-  fetchEmployeeSearchList(term){
-    this.props.filterEmployee(term);
+  fetchEmployeeSearchList(term,sortTerm = null){
+    this.props.filterEmployee(term,sortTerm);
 
      //this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1);
   }
@@ -75,7 +75,8 @@ class Employee_List extends Component{
             <td className="border-end"></td>
             <td className="border-end">
             <div className="right-float">
-            <div style={{padding:'8px'}}>Sort by:<select id="sort">
+            <div style={{padding:'8px'}}><select id="sort" onChange={(e)=>this.fetchEmployeeSearchList("",e.target.value,)}>
+              <option value="firstName">Sort by</option>
               <option value="firstName">First Name</option>
               <option value="lastName">Last Name</option>
             </select></div>
