@@ -18,7 +18,7 @@ class EmployeeCard extends Component {
                 </div>
                 <div className="media-body">
                   <div className="media-heading" style={{padding:'5px'}} ><h5>{this.props.employee.firstName} {this.props.employee.lastName}</h5></div>
-                  {this.props.employee.bio.substring(0,80) + " ..."}
+                  {this.props.employee.bio.substring(0,50) + " ..."}
                 </div>
               </div>
               </CardBody>

@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import Employee_Detail from './employee_detail';
 import Modal from 'react-responsive-modal';
 import EmployeeCard from '../components/employee_card';
+import Moment from 'react-moment';
 
 
 
@@ -35,7 +36,7 @@ class Employee_List extends Component{
     }
     console.log(employeeListFinal);
     return employeeListFinal.map((employee) => {
-        return (<div style={{width:'355px', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
+        return (<div style={{width:'30%', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
@@ -45,7 +46,7 @@ class Employee_List extends Component{
             <tr>
                 <td><h1>{this.props.companyInfo.companyName}</h1>{this.props.companyInfo.companyMotto}</td>
 
-                <td>Since {this.props.companyInfo.companyEst}</td>
+                <td>Since <Moment date={this.props.companyInfo.companyEst} /></td>
             </tr>
             <tr>
             <td><h3>Our Employees</h3></td>
