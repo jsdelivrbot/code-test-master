@@ -31,8 +31,6 @@ class Employee_List extends Component{
   }
   fetchEmployeeSearchList(term,sortTerm = null){
     this.props.filterEmployee(term,sortTerm);
-
-     //this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1);
   }
 
   closePopUp(){
@@ -48,7 +46,7 @@ class Employee_List extends Component{
       employeeListFinal = this.props.employeeFilter;
     }
     return employeeListFinal.map((employee) => {
-        return (<div style={{width:'30%', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
+        return (<div key={employee.id} style={{width:'30%', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
@@ -56,7 +54,6 @@ class Employee_List extends Component{
     return(<div>
 
       <table className="table table-hover">
-
           <thead>
             <tr>
                 <td className="border-class"><h3>{this.props.companyInfo.companyName}</h3>
@@ -66,10 +63,7 @@ class Employee_List extends Component{
                   <td className="border-class">
                     <div style={{float:'right'}}>  Since <Moment format="YYYY" date={this.props.companyInfo.companyEst} /></div>
                   </td>
-
-
             </tr>
-
             <tr>
             <td className="border-end"><h5>Our Employees</h5></td>
             <td className="border-end"></td>
@@ -88,14 +82,10 @@ class Employee_List extends Component{
           <tbody>
           </tbody>
       </table>
-
       <div className="container">{this.renderlist()}</div>
       <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
     );
-  //  return(
-  //  <ul className = "list-group col-md-4">
-  //  {this.renderlist()}
-    //</ul>);
+
   }
 }
 
