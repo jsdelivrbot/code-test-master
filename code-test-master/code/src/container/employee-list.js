@@ -7,6 +7,8 @@ import {filterEmployee} from '../actions/action_employeeFilter';
 import { bindActionCreators } from 'redux';
 import Employee_Detail from './employee_detail';
 import Modal from 'react-responsive-modal';
+import EmployeeCard from '../components/employee_card';
+
 
 
 class Employee_List extends Component{
@@ -16,7 +18,6 @@ class Employee_List extends Component{
     this.setState({open : true});
   }
   fetchEmployeeSearchList(term){
-    console.log(term);
     this.props.filterEmployee(term);
      //this.props.employeeList.filter((employee)=>employee.firstName.search(term) > -1);
   }
@@ -30,33 +31,13 @@ class Employee_List extends Component{
     }
     console.log(employeeListFinal);
     return employeeListFinal.map((employee) => {
-      const imageUrl = employee.avatar;
-        return (
-            <tr key={employee.id} onClick={() => this.togglePopUp(employee)}>
-            <td>
-              <div className="video-list media">
-                <div className="media-left">
-                  <img className="media-object" src={imageUrl} />
-                </div>
-                <div className="media-body">
-                  <div className="media-heading">{employee.firstName} {employee.lastName}</div>
-                  {employee.bio}
-                </div>
-              </div>
-            </td>
-            </tr>
-
-        //  <IndividualEmployee selectEmployee={this.props.selectEmployee(employee)} key={employee.id} employee={employee} />
-
-          //<li key={employee.id} className= "list-group-item">{employee.firstName}</li>
-        );
-
-
-
+        return (<div onClick={()=>this.props.selectEmployee(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
+
     return(<div><table className="table table-hover">
+          
           <thead>
             <tr>
                 <td><h1>{this.props.companyInfo.companyName}</h1>{this.props.companyInfo.companyMotto}</td>
@@ -65,16 +46,19 @@ class Employee_List extends Component{
             </tr>
             <tr>
             <td><h3>Our Employees</h3></td>
-
-            <td><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></td>
+            <td></td>
+            <td>
+              <div className="nowrap">
+                <div><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
+                <div><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
+              </div>
+            </td>
             </tr>
           </thead>
           <tbody>
-
-              {this.renderlist()}
-
           </tbody>
       </table>
+      <div>{this.renderlist()}</div>
       <Employee_Detail open={this.state} /></div>
     );
   //  return(
