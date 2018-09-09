@@ -6,7 +6,6 @@ class EmployeeCard extends Component {
     super(props);
   }
   render(){
-    console.log(this.props.employee);
     const imageUrl = this.props.employee.avatar;
     return (
               <div>
