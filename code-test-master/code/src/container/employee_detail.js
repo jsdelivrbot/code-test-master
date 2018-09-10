@@ -30,12 +30,13 @@ class EmployeeDetail extends Component {
       <div className="video-list media">
         <div className="media-left">
           <img className="media-object" src={this.props.employee.avatar} />
-          <div>Job Title:{this.props.employee.jobTitle}</div>
-          <div>Age:{this.props.employee.age}</div>
-          <div>Date of Joining :<Moment format="MM-DD-YYYY" date={this.props.employee.dateJoined} /></div>
+
         </div>
         <div className="media-body">
-          <div className="media-heading">{this.props.employee.firstName} {this.props.employee.lastName}</div>
+          <div className="media-heading"><h4>{this.props.employee.firstName} {this.props.employee.lastName}</h4></div>
+          <div>Job Title: {this.props.employee.jobTitle}</div>
+          <div>Age: {this.props.employee.age}</div>
+          <div>Date of Joining : <Moment format="MM-DD-YYYY" date={this.props.employee.dateJoined} /></div>
           {this.props.employee.bio}
         </div>
       </div>
