@@ -12,7 +12,7 @@ import EmployeeCard from '../components/employee_card';
 import Moment from 'react-moment';
 
 
-
+//Main component which encloses cards and dropdowns of the employees
 class Employee_List extends Component{
    state = {open : false};
   togglePopUp(employee){
@@ -70,9 +70,10 @@ class Employee_List extends Component{
             <td className="border-end">
             <div className="right-float">
             <div style={{padding:'8px'}}><select id="sort" onChange={(e)=>this.fetchEmployeeSearchList("",e.target.value,)}>
-              <option value="firstName">Sort by</option>
+              <option value="">Sort by</option>
               <option value="firstName">First Name</option>
               <option value="lastName">Last Name</option>
+              <option value="age">Age</option>
             </select></div>
             <div style={{padding:'8px',height:'3px'}}><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
             </div>
