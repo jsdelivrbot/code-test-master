@@ -1,7 +1,10 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
+import Moment from 'react-moment';
 
+//Author :Ram, Date :7/10/2018
+//Component to show employee details
 class EmployeeDetail extends Component {
   constructor(props){
     super(props);
@@ -22,11 +25,14 @@ class EmployeeDetail extends Component {
     }
 
     return(
-      <div>
+      <div className="container">
       <Modal open={open} onClose={this.onCloseModel} center>
       <div className="video-list media">
         <div className="media-left">
           <img className="media-object" src={this.props.employee.avatar} />
+          <div>Job Title:{this.props.employee.jobTitle}</div>
+          <div>Age:{this.props.employee.age}</div>
+          <div>Date of Joining :<Moment format="MM-DD-YYYY" date={this.props.employee.dateJoined} /></div>
         </div>
         <div className="media-body">
           <div className="media-heading">{this.props.employee.firstName} {this.props.employee.lastName}</div>

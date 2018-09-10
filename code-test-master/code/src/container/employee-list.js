@@ -11,14 +11,16 @@ import Modal from 'react-responsive-modal';
 import EmployeeCard from '../components/employee_card';
 import Moment from 'react-moment';
 
-
+//Author :Ram, Date :7/10/2018
 //Main component which encloses cards and dropdowns of the employees
 class Employee_List extends Component{
    state = {open : false};
+   //for toggling the Model popup window on click of employee card
   togglePopUp(employee){
     this.props.selectEmployee(employee);
     this.setState({open : true});
   }
+  //for sorting
   sortEmp(term){
       var empList = this.props.employeeList;
       if(!this.props.employeeFilter){
@@ -29,6 +31,8 @@ class Employee_List extends Component{
      }
     this.props.sortEmployee(term,empList);
   }
+
+  //for filtering based on search
   fetchEmployeeSearchList(term,sortTerm = null){
     this.props.filterEmployee(term,sortTerm);
   }
