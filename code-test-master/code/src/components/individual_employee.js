@@ -1,5 +1,7 @@
 import React from 'react';
 
+//Author: Ram date: 7/10//2108
+//Individual employee detail
 const IndividualEmployee = (employee) => {
   const imageUrl = employee.employee.avatar;
   console.log(imageUrl);

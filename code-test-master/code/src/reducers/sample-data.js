@@ -1,4 +1,5 @@
-
+//Author Ram Date: 7/10/2018
+//Local JSON data provided
 import React from 'react';
 
 const companyData = `{

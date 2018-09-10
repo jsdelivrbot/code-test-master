@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 
+//Author Ram Date: 7/10/2018
+//Search bar for searching through user input
 class SearchBar extends Component{
   constructor(props){
     super(props);
