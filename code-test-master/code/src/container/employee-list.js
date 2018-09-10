@@ -49,6 +49,7 @@ class Employee_List extends Component{
     else {
       employeeListFinal = this.props.employeeFilter;
     }
+    
     return employeeListFinal.map((employee) => {
         return (<div key={employee.id} style={{width:'30%', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });

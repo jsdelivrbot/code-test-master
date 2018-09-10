@@ -7,6 +7,7 @@ class EmployeeCard extends Component {
   }
   render(){
     const imageUrl = this.props.employee.avatar;
+    
     return (
               <div>
               <Card style={{border:'solid 1px'}}>
