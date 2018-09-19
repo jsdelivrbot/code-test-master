@@ -19,28 +19,38 @@
     width: 100%;
   }
 }
+@media screen and (min-width:700px) and (max-width:1007px) {
+  .cardstyle {
+    width: 45%;
+  }
+}
 /* For 480 Resolution */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px)
-{ .cardstyle {
-  width: 100%;
-}}
+{
+  .cardstyle {
+        width: 100%;
+      }
+}
 @media only screen
 and (min-width: 1370px)
 and (max-width: 1605px)
-{.cardstyle {
-  width: 32%;
-}
+{
+  .cardstyle {
+            width: 32%;
+        }
 }
 @media only screen
 and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 1)
 and (min-device-width : 768px)
 and (max-device-width : 1007px)
-{ .cardstyle {
-  width: 50%;
-}}
+{
+  .cardstyle {
+              width: 50%;
+          }
+}
 
 /* Orientation : Portrait */
 @media only screen
@@ -48,9 +58,11 @@ and (orientation : portrait)
 and (-webkit-min-device-pixel-ratio: 1)
 and (min-device-width : 768px)
 and (max-device-width : 1007px)
-{ .cardstyle {
-  width: 100%;
-}}
+{
+  .cardstyle {
+            width: 50%;
+        }
+}
 .container{
 
   display: flex;
