@@ -9,7 +9,8 @@ import { bindActionCreators } from 'redux';
 import Employee_Detail from './employee_detail';
 import Modal from 'react-responsive-modal';
 import EmployeeCard from '../components/employee_card';
-import Moment from 'react-moment';
+import EmployeeDropDown from '../components/employee_sort';
+import EmployeeHeader from '../components/employee_header';
 import 'airbnb-browser-shims';
 
 //Author :Ram, Date :7/10/2018
@@ -56,28 +57,16 @@ class Employee_List extends Component{
     });
   }
   render(){
-
     return(
       <div>
-        <div className="border-class">
-          <h3>{this.props.companyInfo.companyName}</h3>
-          {this.props.companyInfo.companyMotto}
-          <div className="right-float">Since <Moment format="YYYY" date={this.props.companyInfo.companyEst} /></div>
-        </div>
+        <EmployeeHeader companyInfo={this.props.companyInfo} />
         <div className="header-container">
-          <div className="right-align"><select id="sort" onChange={(e)=>this.fetchEmployeeSearchList("",e.target.value,)}>
-            <option value="">Sort by</option>
-            <option value="firstName">First Name</option>
-            <option value="lastName">Last Name</option>
-            <option value="age">Age</option>
-          </select>
-
-          </div>
-        <div className="right-align"><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) } /></div>
+          <EmployeeDropDown onSorting={term=>this.fetchEmployeeSearchList('',term)} />
+          <div className="right-align"><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) } /></div>
         </div>
-      <div className="clear-float"></div>
-      <div className="container">{this.renderlist()}</div>
-      <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} />
+        <div className="clear-float"></div>
+        <div className="container">{this.renderlist()}</div>
+        <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} />
       </div>
     );
   }

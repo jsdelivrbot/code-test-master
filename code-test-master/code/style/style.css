@@ -9,6 +9,11 @@
     display: flex;
     flex-direction: column;
 }
+.cardstyle{
+  width: 32%;
+  cursor: pointer;
+  height: inherit;
+}
 .container{
 
   display: flex;
