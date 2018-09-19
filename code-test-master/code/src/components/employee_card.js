@@ -9,6 +9,7 @@ class EmployeeCard extends Component {
   }
   render(){
     const imageUrl = this.props.employee.avatar;
+  
     return (
               <div onClick={()=>this.props.onClick()} className="cardstyle">
               <Card style={{border:'solid 1px'}}>
