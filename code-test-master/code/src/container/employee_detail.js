@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import Modal from 'react-responsive-modal';
 import Moment from 'react-moment';
+import 'airbnb-browser-shims';
 
 //Author :Ram, Date :7/10/2018
 //Component to show employee details

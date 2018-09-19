@@ -52,7 +52,7 @@ class Employee_List extends Component{
     }
 
     return employeeListFinal.map((employee) => {
-        return (<div key={employee.id} style={{width:'28%',cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
+        return (<div key={employee.id} style={{width:'32%',height:'25%',cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
