@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 //Author Ram Date: 7/10/2018
-//Search bar for searching through user input
+//Search bar for sorting through user input
 class EmployeeDropDown extends Component{
   constructor(props){
     super(props);
