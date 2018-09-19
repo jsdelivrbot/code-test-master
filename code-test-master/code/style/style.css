@@ -2,13 +2,20 @@
   white-space: nowrap;
 }
 .container{
+
   display: flex;
   flex-direction: row;
+  flex-shrink: 1;
   flex-wrap: wrap;
+  padding: 5px;
+  min-width: 100%;
   justify-content: space-around;
   background-color: #F5F5F5;
 }
-
+.card-content{
+  display: flex;
+  flex-wrap: wrap;
+}
 .header{
   align-content: flex-start;
 }
@@ -18,17 +25,32 @@
 .border-class{
   border-bottom: 1px solid;
   background-color: silver;
+  min-width: 100%;
 }
 .border-end{
+  display: block;
+  clear: both;
   border-bottom: 2px ridge;
-
 }
-
-.right-float{
+.clear-float{
+  display: block;
+  clear: both;
+}
+.header-container{
   display: flex;
   flex-direction: row;
-  float: right;
+  padding: 5px;
+  justify-content: flex-end;
+}
+.right-align{
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding-right: 5px;
+  justify-content: space-space-around;
+}
+.right-float{
+  display: block;
+  float: right;
+  justify-content: flex-end;
+
 }

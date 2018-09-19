@@ -14,11 +14,11 @@ class EmployeeCard extends Component {
               <Card style={{border:'solid 1px'}}>
               <CardBody>
               <div className="video-list media">
-                <div className="media-left">
-                  <img className="media-object" src={this.props.employee.avatar} />
+                <div style={{float:'left'}}>
+                  <img style={{float:'left',display:'flex'}} src={this.props.employee.avatar} />
                 </div>
                 <div className="media-body">
-                  <div className="media-heading" style={{padding:'5px'}} ><h5>{this.props.employee.firstName} {this.props.employee.lastName}</h5></div>
+                  <div className="media-heading" style={{padding:'5px'}}><h5>{this.props.employee.firstName} {this.props.employee.lastName}</h5></div>
                   {this.props.employee.bio.substring(0,50) + " ..."}
                 </div>
               </div>

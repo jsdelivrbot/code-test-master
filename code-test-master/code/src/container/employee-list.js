@@ -10,6 +10,7 @@ import Employee_Detail from './employee_detail';
 import Modal from 'react-responsive-modal';
 import EmployeeCard from '../components/employee_card';
 import Moment from 'react-moment';
+import 'airbnb-browser-shims';
 
 //Author :Ram, Date :7/10/2018
 //Main component which encloses cards and dropdowns of the employees
@@ -49,49 +50,36 @@ class Employee_List extends Component{
     else {
       employeeListFinal = this.props.employeeFilter;
     }
-    
+
     return employeeListFinal.map((employee) => {
         return (<div key={employee.id} style={{width:'30%', cursor:'pointer'}} onClick={()=>this.togglePopUp(employee)}><EmployeeCard  key={employee.id} employee={employee}></EmployeeCard></div>);
     });
   }
   render(){
 
-    return(<div>
+    return(
+      <div>
+        <div className="border-class">
+          <h3>{this.props.companyInfo.companyName}</h3>
+          {this.props.companyInfo.companyMotto}
+          <div className="right-float">Since <Moment format="YYYY" date={this.props.companyInfo.companyEst} /></div>
+        </div>
+        <div className="header-container">
+          <div className="right-align"><select id="sort" onChange={(e)=>this.fetchEmployeeSearchList("",e.target.value,)}>
+            <option value="">Sort by</option>
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="age">Age</option>
+          </select>
 
-      <table className="table table-hover">
-          <thead>
-            <tr>
-                <td className="border-class"><h3>{this.props.companyInfo.companyName}</h3>
-                {this.props.companyInfo.companyMotto}
-                </td>
-                <td className="border-class"></td>
-                  <td className="border-class">
-                    <div style={{float:'right'}}>  Since <Moment format="YYYY" date={this.props.companyInfo.companyEst} /></div>
-                  </td>
-            </tr>
-            <tr>
-            <td className="border-end"><h5>Our Employees</h5></td>
-            <td className="border-end"></td>
-            <td className="border-end">
-            <div className="right-float">
-            <div style={{padding:'8px'}}><select id="sort" onChange={(e)=>this.fetchEmployeeSearchList("",e.target.value,)}>
-              <option value="">Sort by</option>
-              <option value="firstName">First Name</option>
-              <option value="lastName">Last Name</option>
-              <option value="age">Age</option>
-            </select></div>
-            <div style={{padding:'8px',height:'3px'}}><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) }/></div>
-            </div>
-            </td>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-      </table>
+          </div>
+        <div className="right-align"><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) } /></div>
+        </div>
+      <div className="clear-float"></div>
       <div className="container">{this.renderlist()}</div>
-      <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} /></div>
+      <Employee_Detail open={this.state} onClosePopUp = {() => this.closePopUp()} />
+      </div>
     );
-
   }
 }
 
