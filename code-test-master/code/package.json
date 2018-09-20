@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "mocha --reporter spec testSetup.js \"components/*.spec.js\"",
+    "test": "mocha --compilers js:babel-core/register ./test/components --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
@@ -15,9 +15,14 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
+    "chai": "^4.1.2",
+    "chai-jquery": "^2.0.0",
     "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "expect": "^23.5.0",
-    "jsdom": "^12.0.0",
+    "jquery": "^3.3.1",
+    "jsdom": "12.0.0",
+    "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
     "react-addons-test-utils": "^15.6.2",
     "webpack": "^1.12.9",
@@ -40,5 +45,9 @@
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.4.0",
     "redux": "4.0.0"
-  }
+  },
+  "setupFiles": [
+    "<rootDir>/config/polyfills.js",
+    "<rootDir>/src/setupTests.js"
+  ]
 }
