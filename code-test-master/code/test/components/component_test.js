@@ -27,7 +27,8 @@ describe('SortComponent',()=>{
 
 describe('HeaderComponent',()=>{
   it('should create object', ()=>{
-    const wrapper = mount(<HeaderComponent />);
+    const props = {companyInfo : {companyName:'Infosys',companyMotto : 'Success', companyEst : '2018-01-17T16:55:10.580Z'}};
+    const wrapper = mount(<HeaderComponent {...props} />);
     expect(HeaderComponent.prototype).to.not.be.null;
   });
 })
