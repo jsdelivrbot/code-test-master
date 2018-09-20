@@ -5,7 +5,7 @@ import {mount,shallow} from 'enzyme';
 import MainComponent from '../../src/components/search-bar';
 import SortComponent from '../../src/components/employee_sort';
 import HeaderComponent from '../../src/components/employee_header';
-import RootComponent from '../../src/components/app';
+import RootComponent from '../../src/components/employee_card';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -33,9 +33,10 @@ describe('HeaderComponent',()=>{
   });
 })
 
-describe('RootComponent',()=>{
-  it('should create object', ()=>{
-    const wrapper = mount(<RootComponent />);
-    expect(RootComponent.prototype).to.not.be.null;
+describe('HeaderComponent',()=>{
+  it('render without any errors', ()=>{
+    const props = {companyInfo : {companyName:'Infosys',companyMotto : 'Success', companyEst : '2018-01-17T16:55:10.580Z'}};
+    const wrapper = mount(<HeaderComponent {...props} />);
+    expect(shallow(<HeaderComponent {...props} />).length).equal(1);
   });
 })
