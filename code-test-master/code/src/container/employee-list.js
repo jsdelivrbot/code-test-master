@@ -53,7 +53,7 @@ class Employee_List extends Component{
     }
 
     return employeeListFinal.map((employee) => {
-      console.log(employee);
+      
         return (<EmployeeCard  key={employee.id} onClick={()=>this.togglePopUp(employee)} employee={employee}></EmployeeCard>);
     });
   }
