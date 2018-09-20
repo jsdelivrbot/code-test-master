@@ -18,11 +18,24 @@ describe('SearchBarComponent',()=>{
     expect(SearchBarComponent.prototype).to.not.be.null;
   });
 })
+describe('SearchBarComponent',()=>{
+  it('Searchbar rendering', ()=>{
+    const wrapper = mount(<SearchBarComponent />);
+    expect(shallow(<SearchBarComponent />).length).equal(1);
+  });
+})
 
 describe('DropdownSortComponent',()=>{
   it('should create object', ()=>{
     const wrapper = mount(<DropdownSortComponent />);
     expect(DropdownSortComponent.prototype).to.not.be.null;
+  });
+})
+
+describe('DropdownSortComponent',()=>{
+  it('Dropdown rendering', ()=>{
+    const wrapper = mount(<DropdownSortComponent />);
+      expect(shallow(<DropdownSortComponent />).length).equal(1);
   });
 })
 
