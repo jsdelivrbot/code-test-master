@@ -53,7 +53,7 @@ class Employee_List extends Component{
     }
 
     return employeeListFinal.map((employee) => {
-      
+
         return (<EmployeeCard  key={employee.id} onClick={()=>this.togglePopUp(employee)} employee={employee}></EmployeeCard>);
     });
   }
@@ -61,7 +61,9 @@ class Employee_List extends Component{
     return(
       <div>
         <EmployeeHeader companyInfo={this.props.companyInfo} />
+        <div className="employee-align"><h4>Our Employees</h4></div>
         <div className="header-container">
+
           <EmployeeDropDown onSorting={term=>this.fetchEmployeeSearchList('',term)} />
           <div className="right-align"><SearchBar onSearchTermChange={term => this.fetchEmployeeSearchList(term) } /></div>
         </div>
