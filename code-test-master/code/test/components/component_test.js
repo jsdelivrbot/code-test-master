@@ -17,6 +17,12 @@ describe('SearchBarComponent',()=>{
     const wrapper = mount(<SearchBarComponent />);
     expect(SearchBarComponent.prototype).to.not.be.null;
   });
+  it('setting the state',()=>{
+    const searchbar = shallow(<SearchBarComponent />);
+    const name = "Samantha";
+    searchbar.setState({term:'Samantha'});
+    expect(searchbar.find('input').html().indexOf(name) > -1).equal(true);
+  });
 })
 describe('SearchBarComponent',()=>{
   it('Searchbar rendering', ()=>{
