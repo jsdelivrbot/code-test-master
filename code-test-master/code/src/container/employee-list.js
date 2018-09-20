@@ -61,7 +61,7 @@ class Employee_List extends Component{
     return(
       <div>
         <EmployeeHeader companyInfo={this.props.companyInfo} />
-        <div className="employee-align"><h4>Our Employees</h4></div>
+        <div className="employee-align">Our Employees</div>
         <div className="header-container">
 
           <EmployeeDropDown onSorting={term=>this.fetchEmployeeSearchList('',term)} />
