@@ -11,16 +11,46 @@ import Modal from 'react-responsive-modal';
 import EmployeeCard from '../components/employee_card';
 import EmployeeDropDown from '../components/employee_sort';
 import EmployeeHeader from '../components/employee_header';
+import axios from 'axios';
 import 'airbnb-browser-shims';
 
 //Author :Ram, Date :7/10/2018
 //Main component which encloses cards and dropdowns of the employees
 class Employee_List extends Component{
-   state = {open : false};
+   state = {employees :[]};
+
    //for toggling the Model popup window on click of employee card
   togglePopUp(employee){
     this.props.selectEmployee(employee);
     this.setState({open : true});
+  }
+  componentWillMount(){
+      this.loadEmployees();
+  }
+  loadEmployees(){
+    const ax = axios.create({
+      baseURL: 'http://localhost:8080/'
+    });
+    ax.get('sample-data.json').then((response)=>{
+      console.log(response.data);
+      this.setState({employees : response.data.employees});
+    });
+  }
+ filterEmployee(term,sortTerm=null)
+  {
+    if(this.state.employees.length <= 0 && term===''){
+      this.loadEmployees();
+    }
+    if(!sortTerm){
+      console.log(this.state.employees.length);
+      var employeeFilter =this.state.employees.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
+     this.setState({employees : employeeFilter});
+    }
+    else{
+      var employeeFilter =this.state.employees.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
+       var employeeSort = _.sortByOrder(employeeFilter, [sortTerm],['asc']);
+       this.setState({employees : employeeSort});
+    }
   }
   //for sorting
   sortEmp(term){
@@ -36,7 +66,7 @@ class Employee_List extends Component{
 
   //for filtering based on search
   fetchEmployeeSearchList(term,sortTerm = null){
-    this.props.filterEmployee(term,sortTerm);
+    this.filterEmployee(term,sortTerm);
   }
 
   closePopUp(){
@@ -44,14 +74,8 @@ class Employee_List extends Component{
   }
 
   renderlist(){
-    var employeeListFinal = this.props.employeeList;
-    if(!this.props.employeeFilter){
-      employeeListFinal = this.props.employeeList;
-    }
-    else {
-      employeeListFinal = this.props.employeeFilter;
-    }
 
+    var employeeListFinal = this.state.employees;
     return employeeListFinal.map((employee) => {
 
         return (<EmployeeCard  key={employee.id} onClick={()=>this.togglePopUp(employee)} employee={employee}></EmployeeCard>);
@@ -86,7 +110,7 @@ function mapStateToProps(state){
 //anything returned from here will be as props on the employee-list container
 function mapDispatchToProps(dispatch) {
   //whenever this get called, result will be passed to all the reducers
-  return bindActionCreators(Object.assign({},{selectEmployee:selectEmployee},{filterEmployee:filterEmployee}),dispatch);
+  return bindActionCreators({selectEmployee:selectEmployee},dispatch);
 }
 
 
