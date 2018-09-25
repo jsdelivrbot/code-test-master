@@ -32,7 +32,7 @@ class Employee_List extends Component{
       baseURL: 'http://localhost:8080/'
     });
     ax.get('sample-data.json').then((response)=>{
-      console.log(response.data);
+      
       this.setState({employees : response.data.employees});
     });
   }
@@ -42,7 +42,7 @@ class Employee_List extends Component{
       this.loadEmployees();
     }
     if(!sortTerm){
-      console.log(this.state.employees.length);
+      
       var employeeFilter =this.state.employees.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
      this.setState({employees : employeeFilter});
     }
