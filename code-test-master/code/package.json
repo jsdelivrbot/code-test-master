@@ -25,6 +25,7 @@
     "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
     "react-addons-test-utils": "^15.6.2",
+    "redux-promise": "^0.6.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
