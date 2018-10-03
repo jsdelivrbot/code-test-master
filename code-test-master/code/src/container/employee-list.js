@@ -25,31 +25,32 @@ class Employee_List extends Component{
     this.setState({open : true});
   }
   componentWillMount(){
-      this.loadEmployees();
+    //  this.loadEmployees();
+    this.loadEmployees();
   }
-  loadEmployees(){
-    const ax = axios.create({
-      baseURL: 'http://localhost:8080/'
-    });
-    ax.get('sample-data.json').then((response)=>{
-      
-      this.setState({employees : response.data.employees});
-    });
+
+  loadEmployees()
+  {
+    this.props.filterEmployee();
+
+    this.setState({employees : this.props.employeeFilter});
   }
  filterEmployee(term,sortTerm=null)
   {
-    if(this.state.employees.length <= 0 && term===''){
-      this.loadEmployees();
+    //if(this.state.employees.length <= 0 && term===''){
+    //  this.loadEmployees();
+  //  }
+
+    if(!sortTerm)
+    {
+      var employeeFilter =this.props.employeeFilter.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
+      this.setState({employees : employeeFilter});
     }
-    if(!sortTerm){
-      
-      var employeeFilter =this.state.employees.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
-     this.setState({employees : employeeFilter});
-    }
-    else{
-      var employeeFilter =this.state.employees.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
-       var employeeSort = _.sortByOrder(employeeFilter, [sortTerm],['asc']);
-       this.setState({employees : employeeSort});
+    else
+    {
+      var employeeFilter =this.props.employeeFilter.filter((employee)=>employee.firstName.toLowerCase().includes(term.toLowerCase()));
+      var employeeSort = _.sortByOrder(employeeFilter, [sortTerm],['asc']);
+      this.setState({employees : employeeSort});
     }
   }
   //for sorting
@@ -66,6 +67,8 @@ class Employee_List extends Component{
 
   //for filtering based on search
   fetchEmployeeSearchList(term,sortTerm = null){
+    //this.filterEmployee(term,sortTerm);
+
     this.filterEmployee(term,sortTerm);
   }
 
@@ -74,8 +77,10 @@ class Employee_List extends Component{
   }
 
   renderlist(){
-
-    var employeeListFinal = this.state.employees;
+    var employeeListFinal = this.props.employeeFilter;
+    if(this.state.employees.length > 0){
+      employeeListFinal = this.state.employees;
+    }
     return employeeListFinal.map((employee) => {
 
         return (<EmployeeCard  key={employee.id} onClick={()=>this.togglePopUp(employee)} employee={employee}></EmployeeCard>);
@@ -110,7 +115,7 @@ function mapStateToProps(state){
 //anything returned from here will be as props on the employee-list container
 function mapDispatchToProps(dispatch) {
   //whenever this get called, result will be passed to all the reducers
-  return bindActionCreators({selectEmployee:selectEmployee},dispatch);
+  return bindActionCreators(Object.assign({},{selectEmployee:selectEmployee},{filterEmployee:filterEmployee}) ,dispatch);
 }
 
 
